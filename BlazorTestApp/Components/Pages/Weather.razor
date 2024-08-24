@@ -31,8 +31,8 @@ else
             {
                 <tr>
                     <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.Temperature.DegreesCelsius</td>
-                    <td>@forecast.Temperature.DegreesFahrenheit</td>
+                    <td>@forecast.Temperature.DegreesCelsius.ToString("F1")</td>
+                    <td>@forecast.Temperature.DegreesFahrenheit.ToString("F1")</td>
                     <td>@forecast.Summary</td>
                 </tr>
             }
