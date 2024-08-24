@@ -1,10 +1,14 @@
 using BlazorTestApp.Components;
+using WeatherServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorComponents()
+builder.Services
+    .AddWeatherServices()
+    .AddRazorComponents()
     .AddInteractiveServerComponents();
+
 
 var app = builder.Build();
 
