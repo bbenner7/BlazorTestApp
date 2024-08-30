@@ -9,7 +9,10 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["BlazorTestApp/BlazorTestApp.csproj", "BlazorTestApp/"]
+COPY ["WeatherServices/WeatherServices.csproj", "WeatherServices/"]
+
 RUN dotnet restore "./BlazorTestApp/BlazorTestApp.csproj"
+RUN dotnet restore "./WeatherServices/WeatherServices.csproj"
 COPY . .
 WORKDIR "/src/BlazorTestApp"
 RUN dotnet build "./BlazorTestApp.csproj" -c $BUILD_CONFIGURATION -o /app/build
