@@ -9,6 +9,6 @@ namespace WeatherServices
 {
     public interface IWeatherRepository
     {
-        public ICollection<WeatherForecast> GetCurrentForecasts(DateOnly startDate, int daysToFetch);
+        public ICollection<WeatherForecast> GetForecasts(DateOnly startDate, int daysToFetch);
     }
 }

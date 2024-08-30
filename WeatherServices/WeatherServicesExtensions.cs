@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using WeatherServices.Data;
 using WeatherServices.Services;
 
 namespace WeatherServices
@@ -13,6 +14,7 @@ namespace WeatherServices
         public static IServiceCollection AddWeatherServices(this IServiceCollection services)
         {
             services.AddScoped<IWeatherService, WeatherService>();
+            services.AddScoped<IWeatherRepository, FakeWeatherDatabase>();
             return services;
         }
     }
