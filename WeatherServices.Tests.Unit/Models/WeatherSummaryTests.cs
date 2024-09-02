@@ -35,7 +35,7 @@ namespace WeatherServices.Tests.Unit.Models
         {
             var summary = WeatherSummary.Create(Temperature.FromDegreesFahrenheit(temperatureF));
             summary.Should().NotBeNull();
-            summary.ToString().Should().Be(expectedSummary);
+            summary.SummaryString.Should().Be(expectedSummary);
         }
     }
 }

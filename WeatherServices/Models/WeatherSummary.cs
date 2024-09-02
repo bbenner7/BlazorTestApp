@@ -5,7 +5,7 @@ namespace WeatherServices.Models;
 
 public record WeatherSummary(Temperature MinTemp, Temperature MaxTemp, string SummaryString)
 {
-    public static WeatherSummary Freezing = new WeatherSummary(Temperature.FromDegreesFahrenheit(-40.0),
+    public static WeatherSummary Freezing = new(Temperature.FromDegreesFahrenheit(-40.0),
         Temperature.FromDegreesFahrenheit(0.0), "Freezing");
 
     public static WeatherSummary Bracing = new WeatherSummary(Temperature.FromDegreesFahrenheit(0.0),
