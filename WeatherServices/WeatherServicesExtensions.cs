@@ -13,9 +13,9 @@ namespace WeatherServices
     {
         public static IServiceCollection AddWeatherServices(this IServiceCollection services)
         {
-            services.AddScoped<IWeatherService, WeatherService>();
-            services.AddScoped<IWeatherRepository, FakeWeatherDatabase>();
-            return services;
+            return services
+                .AddScoped<IWeatherRepository, FakeWeatherDatabase>()
+                .AddScoped<IWeatherService, WeatherService>();
         }
     }
 }

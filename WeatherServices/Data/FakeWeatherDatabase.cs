@@ -25,8 +25,6 @@ public class FakeWeatherDatabase : IWeatherRepository
 
     public ICollection<WeatherForecast> GetForecasts(DateOnly startDate, int daysToFetch)
     {
-        var summaries = new[]
-            { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
         var forecasts = Enumerable.Range(1, daysToFetch).Select(index =>
         {
             var temperature = Temperature.FromDegreesCelsius(Random.Shared.Next(-20, 55));
