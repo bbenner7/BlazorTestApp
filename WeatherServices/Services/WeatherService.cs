@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using Logging;
 using UnitsNet;
 using WeatherServices.Models;
 
@@ -17,11 +18,11 @@ public class WeatherService : IWeatherService
 
     #region Public Constructors
 
-    public WeatherService(IWeatherRepository weatherRepo, ILogger<WeatherService> logger)
+    public WeatherService(IWeatherRepository weatherRepo, IInstrumentation instrumentation, ILogger<WeatherService> logger)
     {
         _weatherRepo = weatherRepo;
         _logger = logger;
-        _activitySource = new ActivitySource("weather-service");
+        _activitySource = instrumentation.ActivitySource;
     }
 
     #endregion Public Constructors
@@ -33,7 +34,6 @@ public class WeatherService : IWeatherService
         using var activity = _activitySource.CreateActivity("retrieve forecasts", ActivityKind.Producer);
 
         var forecasts = _weatherRepo.GetForecasts(startDate, numberOfForecasts);
-
         _logger.LogInformation($"Generated {numberOfForecasts} weather forecasts");
 
         return forecasts;

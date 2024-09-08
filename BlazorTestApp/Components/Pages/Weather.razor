@@ -1,6 +1,8 @@
 ﻿@page "/weather"
 @inject IWeatherService WeatherService
+@inject IInstrumentation Instrumentation;
 
+@using Logging
 @using WeatherServices
 @using WeatherServices.Models
 @attribute [StreamRendering]
