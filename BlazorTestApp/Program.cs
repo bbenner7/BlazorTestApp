@@ -1,4 +1,5 @@
 using BlazorTestApp.Components;
+using Logging;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
@@ -10,16 +11,24 @@ var builder = WebApplication.CreateBuilder(args);
 // Add OpenTelemetry
 builder.Logging.AddOpenTelemetry(options =>
 {
-    options.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("blazor-test-app"))
+    options.SetResourceBuilder(ResourceBuilder
+            .CreateDefault()
+            .AddService("BlazorTestApp"))
         .AddConsoleExporter();
 });
 builder.Services.AddOpenTelemetry()
-    .ConfigureResource(resource => resource.AddService("blazor-test-app"))
-    .WithTracing(tracing => tracing.AddAspNetCoreInstrumentation().AddConsoleExporter())
-    .WithMetrics(tracing => tracing.AddAspNetCoreInstrumentation().AddConsoleExporter());
+    .ConfigureResource(resource => resource.AddService("BlazorTestApp"))
+    .WithTracing(tracing => tracing
+        .AddSource("BlazorTestApp")
+        .AddAspNetCoreInstrumentation()
+        .AddConsoleExporter())
+    .WithMetrics(tracing => tracing
+        .AddAspNetCoreInstrumentation()
+        .AddConsoleExporter());
 
 // Add services to the container.
 builder.Services
+    .AddSingleton<IInstrumentation, Instrumentation>()
     .AddWeatherServices()
     .AddRazorComponents()
     .AddInteractiveServerComponents();
