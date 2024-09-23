@@ -6,26 +6,17 @@ using WeatherServices.Models;
 
 namespace WeatherServices.Services;
 
-public class WeatherService : IWeatherService
+public class WeatherService(
+    IWeatherRepository weatherRepo,
+    IInstrumentation instrumentation,
+    ILogger<WeatherService> logger)
+    : IWeatherService
 {
     #region Private Fields
 
-    private readonly ActivitySource _activitySource;
-    private readonly IWeatherRepository _weatherRepo;
-    private readonly ILogger<WeatherService> _logger;
+    private readonly ActivitySource _activitySource = instrumentation.ActivitySource;
 
     #endregion Private Fields
-
-    #region Public Constructors
-
-    public WeatherService(IWeatherRepository weatherRepo, IInstrumentation instrumentation, ILogger<WeatherService> logger)
-    {
-        _weatherRepo = weatherRepo;
-        _logger = logger;
-        _activitySource = instrumentation.ActivitySource;
-    }
-
-    #endregion Public Constructors
 
     #region Public Methods
 
@@ -33,8 +24,8 @@ public class WeatherService : IWeatherService
     {
         using var activity = _activitySource.CreateActivity("retrieve forecasts", ActivityKind.Producer);
 
-        var forecasts = _weatherRepo.GetForecasts(startDate, numberOfForecasts);
-        _logger.LogInformation($"Generated {numberOfForecasts} weather forecasts");
+        var forecasts = weatherRepo.GetForecasts(startDate, numberOfForecasts);
+        logger.LogInformation($"Generated {numberOfForecasts} weather forecasts");
 
         return forecasts;
     }
