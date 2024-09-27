@@ -25,7 +25,7 @@ public class WeatherService(
         using var activity = _activitySource.CreateActivity("retrieve forecasts", ActivityKind.Producer);
 
         var forecasts = weatherRepo.GetForecasts(startDate, numberOfForecasts);
-        logger.LogInformation($"Generated {numberOfForecasts} weather forecasts");
+        logger.LogInformation("Generated {numberOfForecasts} weather forecasts", numberOfForecasts);
 
         return forecasts;
     }
