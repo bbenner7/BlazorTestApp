@@ -29,7 +29,7 @@ builder.Services.AddOpenTelemetry()
 // Add services to the container.
 builder.Services
     .AddSingleton<IInstrumentation, Instrumentation>()
-    .AddWeatherServices()
+    .AddWeatherServices(builder.Configuration)
     .AddRazorComponents()
     .AddInteractiveServerComponents();
 

@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WeatherServices.Models;
+﻿using WeatherServices.Models;
 
 namespace WeatherServices
 {
     public interface IWeatherRepository
     {
+        #region Public Methods
+
         public ICollection<WeatherForecast> GetForecasts(DateOnly startDate, int daysToFetch);
+
+        #endregion Public Methods
     }
 }
