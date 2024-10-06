@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="d96d9021-a241-42b9-af7a-2d34aa09d366" name="postgres@localhost Mapping">
+      <data-sources db="870d9a73-ce00-406a-b7c8-41dc25f89db5" ddl="e3ca3d5a-5fdb-44bb-9aab-4df23bb7879a" />
+      <scope>
+        <node kind="database" qname="weather">
+          <node kind="schema">
+            <name qname="@" />
+            <name qname="public" />
+          </node>
+        </node>
+      </scope>
+    </mapping>
+    <mapping uuid="de27b97b-1a11-4064-af76-0c31ffef561d" name="postgres@postgresql.bennerhome.internal Mapping">
+      <data-sources db="27c26dbf-7fa6-4b03-bcde-1ce12c2f2639" ddl="e3ca3d5a-5fdb-44bb-9aab-4df23bb7879a" />
+      <scope>
+        <node kind="database" qname="weather">
+          <node kind="schema" qname="public" />
+        </node>
+      </scope>
+    </mapping>
+  </component>
+  <component name="SqlDataSourceStorage">
+    <option name="dataSources">
+      <list>
+        <State>
+          <option name="id" value="e3ca3d5a-5fdb-44bb-9aab-4df23bb7879a" />
+          <option name="name" value="BlazorTestApp DDL" />
+          <option name="dbmsName" value="POSTGRES" />
+          <option name="urls">
+            <array>
+              <option value="file://$PROJECT_DIR$" />
+            </array>
+          </option>
+          <option name="outLayout" value="File per object by schema and database.groovy" />
+          <option name="scriptOptions">
+            <map>
+              <entry key="ConstraintContext" value="CONSTRAINT_AFTER_TABLE" />
+              <entry key="CreateIfNotExists" value="1" />
+              <entry key="UseCompactDef" value="1" />
+              <entry key="UserGrants" value="1" />
+            </map>
+          </option>
+          <option name="scopes">
+            <map>
+              <entry key="$PROJECT_DIR$" value="" />
+            </map>
+          </option>
+        </State>
+      </list>
+    </option>
+  </component>
+</project>
